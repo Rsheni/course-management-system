@@ -83,4 +83,28 @@ class CourseController extends Controller
         $courses = Auth::user()->courses;
         return view('courses.my-courses', compact('courses'));
     }
+
+    public function destroy($id)
+    {
+        $course = Course::findOrFail($id);
+        
+        // Only allow the instructor to delete their course
+        if (Auth::user()->id === $course->instructor_id) {
+            $course->delete();
+            return redirect()->route('courses.index')->with('success', 'Course deleted successfully.');
+        }
+
+        return redirect()->route('courses.index')->with('error', 'You are not authorized to delete this course.');
+    }
+
+
+    public function confirmDelete(Course $course)
+    {
+        // Check if the user is the instructor of the course
+        if (Auth::id() !== $course->instructor_id) {
+            return abort(403, 'Unauthorized action.');
+        }
+
+        return view('courses.delete', compact('course'));
+    }
 }

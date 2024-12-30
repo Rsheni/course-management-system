@@ -49,6 +49,17 @@
                                 </li>
                             @endif
                         @else
+
+                        <!-- Instructor Specific Links -->
+                                @if(Auth::user()->role->name === 'instructor')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('courses.create') }}">Create Course</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('courses.index') }}">All Courses</a>
+                                </li>
+                            @endif
+                            
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}

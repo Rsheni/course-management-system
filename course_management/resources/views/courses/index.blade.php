@@ -13,6 +13,15 @@
         @else
         <a href="{{ route('courses.enrollForm', $course->id) }}">Enroll</a>
         @endif
+
+        @if(Auth::id() === $course->instructor_id)
+            <!-- Button to delete the course -->
+            <form action="{{ route('courses.destroy', $course->id) }}" method="POST" style="display:inline;">
+                @csrf
+                @method('DELETE')
+                <button type="submit">Delete Course</button>
+            </form>
+        @endif
     </li>
     @endforeach
 </ul>

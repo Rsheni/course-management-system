@@ -49,3 +49,8 @@ Route::middleware(['auth'])->group(function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// Route for course deletion
+Route::delete('/courses/{id}', [CourseController::class, 'destroy'])->name('courses.destroy');
+Route::get('/courses/{course}/delete', [CourseController::class, 'confirmDelete'])->name('courses.delete');
