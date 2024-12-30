@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background: #333;
+    padding: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a,
+nav ul li button {
+    color: #fff;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.container {
+    margin: 2rem;
+}
+
+.alert.success {
+    background-color: #d4edda;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 5px solid #155724;
+}
+
+.alert.error {
+    background-color: #f8d7da;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 5px solid #721c24;
+}
+
+form label {
+    display: inline-block;
+    width: 120px;
+}
