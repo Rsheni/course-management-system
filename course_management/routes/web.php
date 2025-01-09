@@ -54,3 +54,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route for course deletion
 Route::delete('/courses/{id}', [CourseController::class, 'destroy'])->name('courses.destroy');
 Route::get('/courses/{course}/delete', [CourseController::class, 'confirmDelete'])->name('courses.delete');
+
+//routes for course edit
+Route::get('/courses/{id}/edit', [CourseController::class, 'edit'])->name('courses.edit');
+Route::put('/courses/{id}', [CourseController::class, 'update'])->name('courses.update');

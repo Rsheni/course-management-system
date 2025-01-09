@@ -22,6 +22,10 @@
                 <button type="submit">Delete Course</button>
             </form>
         @endif
+        @if(Auth::id() === $course->instructor_id)
+             <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-warning">Edit</a>
+        @endif
+
     </li>
     @endforeach
 </ul>

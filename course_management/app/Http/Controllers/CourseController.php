@@ -107,4 +107,27 @@ class CourseController extends Controller
 
         return view('courses.delete', compact('course'));
     }
+
+
+public function edit($id)
+{
+    $course = Course::findOrFail($id);
+    return view('courses.edit', compact('course'));
+}
+
+public function update(Request $request, $id)
+{
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        // Add other course fields here...
+    ]);
+
+    $course = Course::findOrFail($id);
+    $course->update($validated);
+
+    return redirect()->route('courses.index')->with('success', 'Course updated successfully!');
+}
+
+
 }
